@@ -1,0 +1,23 @@
+# General
+.DS_Store
+node_modules
+build/
+dist/
+
+# Solidity
+*.swp
+*.swo
+*.solc-output.json
+
+# Truffle
+/.truffle
+/.truffle-config.js
+/.truffle/compile-error.log
+/.truffle/test-error.log
+/.truffle/build-error.log
+/.truffle/contracts
+/.truffle/test
+/.truffle/migrations
+
+# Visual Studio Code
+.vscode
