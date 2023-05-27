@@ -19,5 +19,3 @@ dist/
 /.truffle/test
 /.truffle/migrations
 
-# Visual Studio Code
-.vscode

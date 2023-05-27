@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "GitHub.github-vscode-theme",
+        "GitHub.vscode-pull-request-github",
+        "ms-vsliveshare.vsliveshare",
+        "PKief.material-icon-theme",
+    ]
+}
