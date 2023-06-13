@@ -1,14 +1,49 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
 
+import { WagmiConfig, createConfig, mainnet } from 'wagmi'
+import { createPublicClient, http } from 'viem'
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { InjectedConnector } from 'wagmi/connectors/injected'
+
+const config = createConfig({
+  autoConnect: true,
+  publicClient: createPublicClient({
+    chain: mainnet,
+    transport: http()
+  }),
+})
+
+function Profile() {
+  const { address, isConnected } = useAccount()
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  })
+  const { disconnect } = useDisconnect()
+
+  if (isConnected)
+    return (
+      <div>
+        Connected to {address}
+        <button onClick={() => disconnect()}>Disconnect</button>
+      </div>
+    )
+  return <button onClick={() => connect()}>Connect Wallet</button>
+}
+
+// Pass config to React Context Provider
 export default function Home() {
   return (
     <main className={styles.main}>
+      <WagmiConfig config={config}>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.js</code>
         </p>
+        <Profile />
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -90,6 +125,7 @@ export default function Home() {
           </p>
         </a>
       </div>
+      </WagmiConfig>
     </main>
   )
 }
