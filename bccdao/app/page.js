@@ -7,6 +7,7 @@ import { WagmiConfig, createConfig, mainnet } from 'wagmi'
 import { createPublicClient, http } from 'viem'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
+import { ProposeForm } from '/components/contractFunctions'
 
 const config = createConfig({
   autoConnect: true,
@@ -28,6 +29,7 @@ function Profile() {
       <div>
         Connected to {address}
         <button onClick={() => disconnect()}>Disconnect</button>
+        <ProposeForm />
       </div>
     )
   return <button onClick={() => connect()}>Connect Wallet</button>
@@ -37,23 +39,20 @@ function Profile() {
 export default function Home() {
   return (
     <main className={styles.main}>
-      <WagmiConfig config={config}>
       <div className={styles.description}>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
+        <code className={styles.code}>Get started by making your first proposal&nbsp;</code>
         </p>
-        <Profile />
         <div>
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://uzh.ch/"
             target="_blank"
             rel="noopener noreferrer"
           >
             By{' '}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
+              src="/uzh_logo_schwarz.svg"
+              alt="UZH Logo"
               className={styles.vercelLogo}
               width={100}
               height={24}
@@ -66,15 +65,18 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src="/BCC-logo-sw.png"
+          alt="BCC Logo"
+          width={425}
+          height={400}
           priority
         />
+        <div>
+          <Profile />
+        </div>
       </div>
 
-      <div className={styles.grid}>
+      <div className={styles.grid3}>
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className={styles.card}
@@ -82,9 +84,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Docs <span>-&gt;</span>
+            Vote <span>-&gt;</span>
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
+          <p>Vote on proposals</p>
         </a>
 
         <a
@@ -94,9 +96,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Learn <span>-&gt;</span>
+            Make a proposal <span>-&gt;</span>
           </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+          <p>Share and create</p>
         </a>
 
         <a
@@ -106,26 +108,11 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Templates <span>-&gt;</span>
+            List proposals<span>-&gt;</span>
           </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+          <p>Explore BCC DAO</p>
         </a>
       </div>
-      </WagmiConfig>
     </main>
   )
 }
