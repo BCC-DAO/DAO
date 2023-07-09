@@ -57,7 +57,7 @@ export function ProposeForm() {
           write?.()
         }}
         >
-          <label for="proposalDescription" className={styles.label}>
+          <label htmlFor="proposalDescription" className={styles.label}>
             Describe proposal
           </label>
           <input 
@@ -67,7 +67,7 @@ export function ProposeForm() {
               placeholder="Proposal: Selections are held yearly"
               value={proposalDescription}
           />
-          <label for="tokenAddress" className={styles.label}>
+          <label htmlFor="tokenAddress" className={styles.label}>
             target address
           </label>
           <input 
@@ -77,7 +77,7 @@ export function ProposeForm() {
               placeholder="0x420000"
               value={tokenAddress}
           />
-          <label for="grantAmount" className={styles.label}>
+          <label htmlFor="grantAmount" className={styles.label}>
             Amount
           </label>
           <input 
