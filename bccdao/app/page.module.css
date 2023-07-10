@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 30vh;
 }
 
 .label {
@@ -34,6 +34,9 @@
 
 .button {
   padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .description {
@@ -82,12 +85,39 @@
   max-width: 100%;
 }
 
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50%, auto));
+  width: var(--max-width);
+  max-width: 100%;
+}
+
 .card {
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
+}
+
+.cardright {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+  direction: rtl;
+  text-align: right;
+}
+
+.cardleft {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+  direction: rtl;
+  text-align: left;
 }
 
 .card span {

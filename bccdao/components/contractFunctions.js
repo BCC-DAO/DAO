@@ -25,7 +25,10 @@ export function ProposeForm() {
       console.log(transferCalldata);
     }
 
-    const { config } = usePrepareContractWrite({
+    const { config,
+            error: prepareError,
+            isError: isPrepareError,
+          } = usePrepareContractWrite({
         address: BCCGovernorAddress,
         abi: [
           {
@@ -43,7 +46,7 @@ export function ProposeForm() {
         args: [debouncedProposalDescription],
         enabled: Boolean(debouncedProposalDescription),
       })
-    const { data, write } = useContractWrite(config)
+    const { data, error, isError, write} = useContractWrite(config)
  
     const { isLoading, isSuccess } = useWaitForTransaction({
       hash: data?.hash,
@@ -62,32 +65,32 @@ export function ProposeForm() {
           </label>
           <input 
               id="proposalDescription"
-              className={styles.input}
+              className={styles.card}
               onChange={(e) => setProposalDescription=(e.target.value)}
               placeholder="Proposal: Selections are held yearly"
-              value={proposalDescription}
+              defaultValue={proposalDescription}
           />
           <label htmlFor="tokenAddress" className={styles.label}>
             target address
           </label>
           <input 
               id="tokenAddress"
-              className={styles.input}
+              className={styles.card}
               onChange={(e) => setTokenAddress=(e.target.value)}
               placeholder="0x420000"
-              value={tokenAddress}
+              defaultValue={tokenAddress}
           />
           <label htmlFor="grantAmount" className={styles.label}>
             Amount
           </label>
           <input 
               id="grantAmount"
-              className={styles.input}
+              className={styles.card}
               onChange={(e) => setGrantAmount=(e.target.value)}
               placeholder="100000000000000000000"
-              value={grantAmount}
+              defaultValue={grantAmount}
           />
-          <button disabled={!write || isLoading} onClick={handleEncode}>
+          <button className={styles.button} disabled={!write || isLoading} onClick={handleEncode}>
             {isLoading ? 'Proposing...' : 'Propose'}
           </button>
           {isSuccess && (
@@ -97,6 +100,9 @@ export function ProposeForm() {
                 <a href={`https://etherscan.io/tx/${data?.hash}`}>Etherscan</a>
               </div>
             </div>
+          )}
+          {(isPrepareError || isError) && (
+            <div>Error: {(prepareError || error)?.message}</div>
           )}
         </form>
       </div>

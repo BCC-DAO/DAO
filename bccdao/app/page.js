@@ -28,11 +28,11 @@ function Profile() {
     return (
       <div>
         Connected to {address}
-        <button onClick={() => disconnect()}>Disconnect</button>
+        <button className={styles.button}  onClick={() => disconnect()}>Disconnect</button>
         <ProposeForm />
       </div>
     )
-  return <button onClick={() => connect()}>Connect Wallet</button>
+  return <button className={styles.button}  onClick={() => connect()}>Connect Wallet</button>
 }
 
 // Pass config to React Context Provider
@@ -76,10 +76,10 @@ export default function Home() {
 
         <Profile />
 
-        <div className={styles.grid3}>
+        <div className={styles.grid2}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
+            className={styles.cardleft}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -90,20 +90,8 @@ export default function Home() {
           </a>
 
           <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Make a proposal <span>-&gt;</span>
-            </h2>
-            <p>Share and create</p>
-          </a>
-
-          <a
             href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
+            className={styles.cardright}
             target="_blank"
             rel="noopener noreferrer"
           >
